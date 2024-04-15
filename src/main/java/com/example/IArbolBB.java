@@ -6,19 +6,20 @@ public interface IArbolBB<T> {
      * Inserta un elemento en el arbol. En caso de ya existir un elemento con la
      * clave indicada en "unElemento", retorna falso.
      *
-     * @param etiqueta Etiqueta del nodo a insertar
-     * @param dato     Dato del nodo a insertar
+     * @param unElemento Elemento a insertar
      * @return Exito de la operacián
      */
 
-    public boolean insertar(Comparable etiqueta, T dato);
+    public boolean insertar(TElementoAB<T> unElemento);
+
+
 
     /**
      * Busca un elemento dentro del árbol.
      *
      *
      * @param unaEtiqueta Etiqueta identificadora del elemento a buscar.
-     *                    .
+     * .
      * @return Elemento encontrado. En caso de no encontrarlo, retorna nulo.
      */
     public TElementoAB<T> buscar(Comparable unaEtiqueta);
@@ -44,12 +45,14 @@ public interface IArbolBB<T> {
      */
     public String postOrden();
 
-    /**
+
+       /**
      * Elimina un elemento dada una etiqueta.
-     *
      * @param unaEtiqueta
-     * @return Dato del nodo eliminado, null si no se encontró.
      */
-    public T eliminar(Comparable unaEtiqueta);
+    public void eliminar(Comparable unaEtiqueta);
+
+
 
 }
+

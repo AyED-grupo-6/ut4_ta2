@@ -1,3 +1,4 @@
+
 package com.example;
 
 public interface IElementoAB<T> {
@@ -83,7 +84,7 @@ public interface IElementoAB<T> {
 
     /**
      * Elimina un elemento dada una etiqueta.
-     *
+     * 
      * @param unaEtiqueta
      * @return
      */
