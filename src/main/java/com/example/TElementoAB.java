@@ -50,8 +50,40 @@ public class TElementoAB<T> implements IElementoAB<T> {
 
     @Override
     public TElementoAB<T> buscar(Comparable unaEtiqueta) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscar'");
+        TElementoAB<T> resultado = null;
+        if (unaEtiqueta == this.etiqueta) {
+            resultado = this;
+        } else if (unaEtiqueta.compareTo(this.etiqueta) == 1) {
+            if (this.hijoIzq != null) {
+                resultado = this.hijoIzq.buscar(unaEtiqueta);
+
+            }
+        } else {
+            if (this.hijoDer != null) {
+                resultado = this.hijoDer.buscar(unaEtiqueta);
+            }
+        }
+        return resultado;
+    }
+
+    public TElementoAB<T> buscar(Comparable unaEtiqueta, int[] contador) {
+        contador[0]++;
+        TElementoAB<T> resultado = null;
+        if (unaEtiqueta == this.etiqueta) {
+            resultado = this;
+        } else if (unaEtiqueta.compareTo(this.etiqueta) == 1) {
+            if (this.hijoIzq != null) {
+                resultado = this.hijoIzq.buscar(unaEtiqueta, contador);
+
+            }
+        } else {
+            if (this.hijoDer != null) {
+                resultado = this.hijoDer.buscar(unaEtiqueta, contador);
+            }
+
+        }
+
+        return resultado;
     }
 
     @Override
@@ -107,20 +139,34 @@ public class TElementoAB<T> implements IElementoAB<T> {
 
     @Override
     public String inOrden() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'inOrden'");
+        StringBuilder stringBuilder = new StringBuilder();
+        if (this.hijoIzq != null) {
+            stringBuilder.append(hijoIzq.inOrden().toString());
+        }
+
+        stringBuilder.append(this.getDatos().toString());
+        if (this.hijoDer != null) {
+            stringBuilder.append(hijoDer.inOrden());
+        }
+        return stringBuilder.toString();
     }
 
     @Override
     public String postOrden() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'postOrden'");
+        StringBuilder stringBuilder = new StringBuilder();
+        if (this.hijoIzq != null) {
+            stringBuilder.append(hijoIzq.postOrden().toString());
+        }
+        if (this.hijoDer != null) {
+            stringBuilder.append(hijoDer.postOrden().toString());
+        }
+        stringBuilder.append(this.getDatos().toString());
+        return stringBuilder.toString();
     }
 
     @Override
     public T getDatos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getDatos'");
+        return this.datos;
     }
 
     @Override
@@ -128,6 +174,5 @@ public class TElementoAB<T> implements IElementoAB<T> {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'eliminar'");
     }
-
 
 }
