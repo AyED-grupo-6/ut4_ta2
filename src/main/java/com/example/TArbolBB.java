@@ -1,6 +1,5 @@
 package com.example;
 
-
 public class TArbolBB<T> implements IArbolBB<T> {
 
     private TElementoAB<T> raiz;
@@ -22,8 +21,17 @@ public class TArbolBB<T> implements IArbolBB<T> {
 
     @Override
     public TElementoAB<T> buscar(Comparable unaEtiqueta) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscar'");
+        if (raiz == null) {
+            return null;
+        }
+        return raiz.buscar(unaEtiqueta);
+    }
+
+    public TElementoAB<T> buscar(Comparable unaEtiqueta, int[] contador) {
+        if (raiz == null) {
+            return null;
+        }
+        return raiz.buscar(unaEtiqueta, contador);
     }
 
     @Override
@@ -34,14 +42,12 @@ public class TArbolBB<T> implements IArbolBB<T> {
 
     @Override
     public String inOrden() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'inOrden'");
+        return this.raiz.inOrden();
     }
 
     @Override
     public String postOrden() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'postOrden'");
+        return this.raiz.postOrden();
     }
 
     @Override
@@ -50,4 +56,4 @@ public class TArbolBB<T> implements IArbolBB<T> {
         throw new UnsupportedOperationException("Unimplemented method 'eliminar'");
     }
 
-       }
+}
