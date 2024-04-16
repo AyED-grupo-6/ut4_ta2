@@ -16,8 +16,23 @@ public class TArbolBB<T> implements IArbolBB<T> {
 
     @Override
     public boolean insertar(TElementoAB<T> unElemento) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insertar'");
+        if (raiz == null) {
+            raiz = unElemento;
+            return true;
+        }
+        else{
+            return raiz.insertar(unElemento);
+        }
+    }
+
+    public boolean insertar(TElementoAB<T> unElemento, int[] contador) {
+        if (raiz == null) {
+            raiz = unElemento;
+            return true;
+        }
+        else{
+            return raiz.insertar(unElemento, contador);
+        }
     }
 
     @Override

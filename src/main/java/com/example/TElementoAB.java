@@ -56,8 +56,47 @@ public class TElementoAB<T> implements IElementoAB<T> {
 
     @Override
     public boolean insertar(TElementoAB<T> elemento) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insertar'");
+        switch (etiqueta.compareTo(elemento.etiqueta)){
+            case 0:  return false;
+            case -1: {
+                if(hijoIzq == null){
+                    hijoIzq = elemento;
+                    return true;
+                } 
+                return hijoIzq.insertar(elemento);
+            }  
+            case 1: {
+                if(hijoDer == null){
+                    hijoDer = elemento;
+                    return true;
+                } 
+                return hijoDer.insertar(elemento);
+            }
+            default: return false;
+        }
+    }
+
+
+    public boolean insertar(TElementoAB<T> elemento, int[] contador) {
+        contador[0]++;
+        switch (etiqueta.compareTo(elemento.etiqueta)){
+            case 0:  return false;
+            case -1: {
+                if(hijoIzq == null){
+                    hijoIzq = elemento;
+                    return true;
+                } 
+                return hijoIzq.insertar(elemento, contador);
+            }  
+            case 1: {
+                if(hijoDer == null){
+                    hijoDer = elemento;
+                    return true;
+                } 
+                return hijoDer.insertar(elemento, contador);
+            }
+            default: return false;
+        }
     }
 
     @Override
